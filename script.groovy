@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                git branch: 'main'
-                    url: 'https://github.com/pujapatel81/publicrepo.git'
+                git branch: 'main' url: 'https://github.com/pujapatel81/publicrepo.git'
             }
         }
          stage('build') {
