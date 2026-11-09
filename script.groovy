@@ -1,14 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('clone') {
             steps {
-                sh 'echo building app'
+                git branch: 'main'
+                    url: 'https://github.com/pujapatel81/publicrepo.git'
             }
         }
-         stage('test') {
+         stage('build') {
             steps {
-                sh 'echo testing app'
+                archiveArtifacts artifacts: 'script.groovy mvn clean package -DSKIPTests', 
+                followSymlinks: false
             }
         }
          stage('deploy') {
